@@ -1,0 +1,133 @@
+.cards{
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+}
+
+.card {
+    display: flex;
+    align-items: start;
+    width: 100%;
+    max-width: 461px;
+    justify-content: space-between;
+  }
+  
+  .card__info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  
+  .card__field {
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .card__label {
+    margin-right: 4px;
+  }
+  
+  .card__value {
+    font-weight: 700;
+  }
+  
+  .card__delete {
+    background-color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .card__delete-icon {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .card__actions {
+    display: flex;
+    gap: 15px;
+  }
+  
+  .card__icon-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+  }
+  
+  .card__add{
+    max-width: 105px;
+    color: #283991;
+    font-weight: 700;
+    font-size: 18px;
+    padding: 0;
+    border: none;
+    background-color: #fff;
+    cursor: pointer;
+  }
+
+  .card__members-count {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  
+  .card__members-list {
+    list-style: decimal inside;
+    font-size: 18px;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  li::marker {
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;   
+  }
+
+  .team__add{
+    margin-top: 50px;
+  }
+
+  .account-card{
+    border: 1px solid #28399159;
+    border-radius: 20px;
+    padding: 60px 70px;
+  }
+
+  .account__add{
+    max-width: 187px;
+    margin-top: 45px;
+  }
+.account-card__divider {
+  height: 1px;
+  background-color: #e0e0e0;
+  margin: 20px 0;
+}
+
+.account{
+  max-width: 880px;
+  margin: 100px auto 160px;
+  font-family: "Inter", san-serif;
+}
+
+.account__submit-button{
+  margin: 90px auto 0px;
+  display: block;
+  width: fit-content;
+}
+
+.account-card__section-child, .account-card__section-parent{
+  display: flex;
+  justify-content: space-between;
+}
+
+.card__actions-account{
+  display: flex;
+  align-items: start;
+  gap: 15px;
+}
+

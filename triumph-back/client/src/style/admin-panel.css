@@ -1,0 +1,41 @@
+.admin-panel{
+    font-family: 'Inter', sans-serif;
+    margin: 100px auto 160px;
+    max-width: 1180px;
+    padding: 0 15px;
+}
+
+.admin-panel__title{
+    font-size: 40px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.admin-panel__nav{
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    margin-bottom: 60px;
+}
+
+.admin-panel__tab{
+    background-color: #fff;
+    border: none;
+    color: #929292;
+    font-size: 18px;
+    padding-block: 14.5px;
+    border-bottom: 1px solid #929292;
+    cursor: pointer;
+}
+
+.admin-panel__tab--active{
+    color: #283991;
+    border-bottom: 2px solid #283991;
+    font-weight: 600;
+}
+
+.teams__list{
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+}

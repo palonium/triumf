@@ -1,0 +1,123 @@
+.registration {
+    max-width: 718px;
+    margin: 100px auto 160px;
+    font-family: "Inter", sans-serif;
+  }
+
+  .registration__title {
+    text-align: center;
+    font-size: 40px;
+    font-weight: 700;
+    margin-bottom: 60px;
+  }
+  
+  .registration__form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+  }
+  
+  .registration__form-input,
+  .registration__form-input-wrapper {
+    width: 100%;
+    position: relative;
+  }
+  
+  .registration__form-input {
+    width: 100%;
+    min-width: 718px;
+    padding: 24px 30px;
+    border: 1px solid #28399159;
+    border-radius: 20px;
+    font-size: 18px;
+    outline: none;
+  }
+
+  .registration__form-input::placeholder {
+    color: #00000080;
+    font-size: 18px;
+  }
+  
+  .registration__form-input-button {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+  }
+  
+  .registration__form-input-icon {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    margin-right: 23px;
+  }
+  
+  
+  .registration__submit-button {
+    background-color: #283991;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 700;
+    padding: 20px 65px;
+    border-radius: 17px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    max-width: 322px;
+    margin-top: 30px;
+  }
+  
+  .registration__submit-button:hover {
+    background-color: #16257a;
+  }
+  
+  .details__title{
+    margin-bottom: 30px;
+  }
+
+  .registration__subtitle{
+    margin-bottom: 30px;
+    font-size: 16px;
+    text-align: center;
+  }
+  
+
+  .input--error {
+    border: 1px solid red;
+  }
+  
+  .input--shake {
+    animation: shake 0.3s;
+  }
+  
+  @keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-4px); }
+    50% { transform: translateX(4px); }
+    75% { transform: translateX(-4px); }
+    100% { transform: translateX(0); }
+  }
+  
+  .registration__link{
+    background-color: #fff;
+    border: none;
+    font-size: 18px;
+    font-weight: 700;
+    margin-right: auto;
+  }
+
+  .booking__modal-input.input--error,
+.modal__input.input--error {
+  border: 1px solid red !important;
+}
+
+.registration__form-input-icon {
+  width: 24px;
+  height: 24px;
+  display: block;
+}
