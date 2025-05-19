@@ -16,11 +16,11 @@ export const deleteUsers = async (id) => {
   return true;
 };
 
-export const updateChildTeam = async (childId, team) => {
+export const updateChildTeam = async (childId, teamId) => {
   const res = await fetch(`/api/children/${childId}`, {
     method: "PATCH",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ team }),
+    body: JSON.stringify({ teamId }),
   });
   if (!res.ok) {
     throw new Error("Ошибка обновления команды ребёнка");

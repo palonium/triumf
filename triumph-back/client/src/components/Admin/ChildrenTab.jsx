@@ -11,7 +11,7 @@ export default function ChildrenTab({ users, onDeleteChild }) {
     const fetchTeams = async () => {
       try {
         const data = await getTeams();
-        setTeams(data.map((team) => team.name));
+        setTeams(data);
       } catch (error) {
         console.error('Ошибка загрузки команд:', error);
       }

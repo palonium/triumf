@@ -5,19 +5,12 @@ import CustomSelect from '../../ux/CustomSelect';
 import { useConfirmDelete } from '../../hooks/useConfirmDelete';
 
 export default function ChildCard({ child, parent, teams, onDelete }) {
-  const [selectedTeam, setSelectedTeam] = useState(child.team || '');
+  const [selectedTeam, setSelectedTeam] = useState(child.team?.id || child.teamId || '');
   const [isParentModalOpen, setIsParentModalOpen] = useState(false);
   const { openConfirm, Confirm } = useConfirmDelete();
 
-  const handleTeamChange = async (e) => {
-    const newTeam = e.target.value;
-    setSelectedTeam(newTeam);
-    try {
-      await updateChildTeam(child.id, newTeam);
-    } catch (error) {
-      console.error('Ошибка обновления команды ребенка', error);
-    }
-  };
+  console.log({ selectedTeam, child, teams });
+  console.log('child.team ===>', child.team);
 
   return (
     <>
@@ -53,22 +46,21 @@ export default function ChildCard({ child, parent, teams, onDelete }) {
           </div>
 
           <CustomSelect
-            options={teams.map((team) =>
-              typeof team === 'string' ? { label: team, value: team } : { label: team.name, value: team.id }
-            )}
+            options={teams.map((team) => ({
+              label: team.name,
+              value: team.id,
+            }))}
             selected={
-              typeof selectedTeam === 'string'
-                ? selectedTeam
-                : teams.find((t) => t.id === selectedTeam)?.name || ''
+              teams.find((t) => t.id === selectedTeam)?.name || ''
             }
             onChange={(team) => {
               setSelectedTeam(team.value);
+              console.log('Выбрана команда:', team);
               updateChildTeam(child.id, team.value).catch((err) =>
-                console.error('Ошибка обновления команды ребенка', err)
+                console.error('Ошибка обновления команды ребёнка:', err)
               );
             }}
           />
-
         </div>
 
         <button className="card__delete" onClick={() => openConfirm(child.id, onDelete)}>

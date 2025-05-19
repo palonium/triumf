@@ -31,13 +31,13 @@ export class AuthService {
     
         let children = [];
     
-        const childRows = db.prepare(`SELECT id, firstName AS name, lastName AS surname, birthDate, team FROM children WHERE userId = ?`).all(userId) as any[];
+        const childRows = db.prepare(`SELECT id, firstName AS name, lastName AS surname, birthDate, teamId FROM children WHERE userId = ?`).all(userId) as any[];
         for (const childRow of childRows) {
             let schedule = null;
             let address = null;
     
-            if (childRow.team) {
-                const scheduleRow = db.prepare('SELECT day, time, addressId FROM schedules WHERE teamId = ?').get(childRow.team) as any;
+            if (childRow.teamId) {
+                const scheduleRow = db.prepare('SELECT day, time, addressId FROM schedules WHERE teamId = ?').get(childRow.teamId) as any;
                 if (scheduleRow) {
                     schedule = scheduleRow;
     
