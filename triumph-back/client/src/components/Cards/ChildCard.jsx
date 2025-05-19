@@ -5,19 +5,23 @@ import CustomSelect from '../../ux/CustomSelect';
 import { useConfirmDelete } from '../../hooks/useConfirmDelete';
 
 export default function ChildCard({ child, parent, teams, onDelete }) {
-  const [selectedTeam, setSelectedTeam] = useState(child.team || '');
+  const [selectedTeam, setSelectedTeam] = useState(child.team || child.teamId || '');
   const [isParentModalOpen, setIsParentModalOpen] = useState(false);
   const { openConfirm, Confirm } = useConfirmDelete();
 
-  const handleTeamChange = async (e) => {
-    const newTeam = e.target.value;
-    setSelectedTeam(newTeam);
-    try {
-      await updateChildTeam(child.id, newTeam);
-    } catch (error) {
-      console.error('Ошибка обновления команды ребенка', error);
-    }
-  };
+  console.log({selectedTeam,child,teams})
+  
+
+
+  // const handleTeamChange = async (e) => {
+  //   const newTeam = e.target.value;
+  //   setSelectedTeam(newTeam);
+  //   try {
+  //     await updateChildTeam(child.id, newTeam);
+  //   } catch (error) {
+  //     console.error('Ошибка обновления команды ребенка', error);
+  //   }
+  // };
 
   return (
     <>
@@ -60,10 +64,12 @@ export default function ChildCard({ child, parent, teams, onDelete }) {
               typeof selectedTeam === 'string'
                 ? selectedTeam
                 : teams.find((t) => t.id === selectedTeam)?.name || ''
+                // todo тут надо короче selectedTeam (строку) будет искать в массиве teams. Сейчас сюда передаётся не полный результат запроса `/api/teams`, а только имена команд
             }
             onChange={(team) => {
               setSelectedTeam(team.value);
-              updateChildTeam(child.id, team.value).catch((err) =>
+              console.log({team})
+              updateChildTeam(child.id, 1).catch((err) => // todo передавать id вместо 1
                 console.error('Ошибка обновления команды ребенка', err)
               );
             }}

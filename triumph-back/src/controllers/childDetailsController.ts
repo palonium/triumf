@@ -28,7 +28,7 @@ export function updateChildDetails(req: AuthRequest, res: Response) {
 
   const info = db
     .prepare(
-      'INSERT INTO children (userId, firstName, lastName, birthDate, team) VALUES (?, ?, ?, ?, ?)'
+      'INSERT INTO children (userId, firstName, lastName, birthDate, teamId) VALUES (?, ?, ?, ?, ?)'
     )
     .run(req.userId, name, surname, birthDate, '');
   const newChild = db

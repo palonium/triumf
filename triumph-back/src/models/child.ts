@@ -4,6 +4,6 @@ export interface Child {
     firstName: string;
     lastName: string;
     birthDate: string;
-    team: string;
+    teamId: number;
 }
   

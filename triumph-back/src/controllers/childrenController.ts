@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import { childrenService } from '../services/childrenService';
 
 export const updateChildTeam = (req: Request, res: Response) => {
-	const updated = childrenService.updateTeam(+req.params.id, req.body.team);
+	const updated = childrenService.updateTeam(+req.params.id, req.body.teamId);
 	if (!updated) return res.status(404).json({ error: 'Not found' });
 	res.json(updated);
 };

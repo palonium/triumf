@@ -18,11 +18,11 @@ export const createTeam = async (team) => {
   return await res.json();
 };
 
-export const updateTeam = async (id, team) => {
+export const updateTeam = async (id, teamId) => {
   const res = await fetch(`/api/teams/${id}`, {
     method: "PATCH",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(team),
+    body: JSON.stringify(teamId),
   });
   if (!res.ok) {
     throw new Error("Ошибка обновления команды");
