@@ -27,8 +27,11 @@ export default function ChildrenDetailsModal({ isOpen, onClose, childrenList }) 
                 Дата рождения: <span className="modal__bold">{child.birthDate}</span>
               </p>
               <p className="modal__line">
-                Команда: <span className="modal__bold">{child.team}</span>
+                Команда: <span className="modal__bold">
+                  {typeof child.team === 'object' ? child.team.name : child.team || '—'}
+                </span>
               </p>
+
             </div>
           ))}
         </div>

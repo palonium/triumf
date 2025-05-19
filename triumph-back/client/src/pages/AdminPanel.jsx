@@ -19,21 +19,28 @@ export default function AdminPanel() {
   const [schedules, setSchedules] = useState([]);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
 
-
   const fetchData = async () => {
     try {
       if (activeTab === 'Заявки') {
         const data = await getRequests();
         setRequests(data);
       } else if (activeTab === 'Пользователи' || activeTab === 'Дети') {
-        const data = await getUsers();
-        setUsers(data);
+        const [usersData, teamsData] = await Promise.all([getUsers(), getTeams()]);
+
+        // добавляем объект team каждому ребёнку
+        const usersWithTeams = usersData.map((user) => {
+          const updatedChildren = user.children.map((child) => {
+            const team = teamsData.find((t) => t.id === child.teamId);
+            return { ...child, team };
+          });
+          return { ...user, children: updatedChildren };
+        });
+
+        setUsers(usersWithTeams);
+        setTeams(teamsData);
       } else if (activeTab === 'Адреса') {
         const data = await getAddresses();
         setAddresses(data);
-      } else if (activeTab === 'Команды') {
-        const data = await getTeams();
-        setTeams(data);
       } else if (activeTab === 'Расписание') {
         const data = await getSchedules();
         setSchedules(data);
@@ -88,10 +95,9 @@ export default function AdminPanel() {
     }
   };
 
-    const handleAddAddress = () => {
-      setIsAddModalOpen(true);
-    };
-  
+  const handleAddAddress = () => {
+    setIsAddModalOpen(true);
+  };
 
   const handleDeleteChild = async (childId) => {
     try {
